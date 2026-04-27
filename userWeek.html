@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Week</title>
+    <link rel="stylesheet" href="checkIn.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="checkIn.html">Check In</a>
+            <a href="userWeek.html" class="active">Your Week</a>
+            <a href="userNextSteps.html">Next Steps</a>
+        </header>
+
+        <h1>Your week</h1>
+       <div class="chart">
+            <div class="bar" style="height: 0%"></div>
+            <div class="bar" style="height: 0%"></div>
+            <div class="bar" style="height: 0%"></div>
+            <div class="bar" style="height: 0%"></div>
+            <div class="bar" style="height: 0%"></div> 
+            <div class="bar" style="height: 0%"></div> 
+            <div class="bar" style="height: 0%"></div> 
+        </div>
+        
+        <div style="margin-bottom: 30px;">
+            <p class="label">Patterns noticed</p>
+            <p id="user-pattern" style="font-size: 15px; color: #64748B;">
+                Analyzing your check-in...
+            </p>
+        </div>
+
+        <a href="userNextSteps.html" class="btn">See Next Steps</a>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

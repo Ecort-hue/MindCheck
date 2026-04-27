@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Check In</title>
+    <link rel="stylesheet" href="checkIn.css">
+</head>
+<body>
+    <div class="container">
+        <h1>How are you today?</h1>
+        
+        <p class="label">Mood</p>
+        <input type="range" min="1" max="100" value="50">
+
+        <p class="label">What's affecting you?</p>
+        <div class="pill-container">
+            <input type="checkbox" id="t1" class="pill-input"><label for="t1" class="pill-label">Sleep</label>
+            <input type="checkbox" id="t2" class="pill-input"><label for="t2" class="pill-label">Stress</label>
+            <input type="checkbox" id="t3" class="pill-input"><label for="t3" class="pill-label">Social</label>
+            <input type="checkbox" id="t4" class="pill-input"><label for="t4" class="pill-label">Work</label>
+            <input type="checkbox" id="t5" class="pill-input"><label for="t5" class="pill-label">Body</label>
+            <input type="checkbox" id="t6" class="pill-input"><label for="t6" class="pill-label">Diet</label>
+        </div>
+
+        <button onclick="logCheckIn()" class="btn">Log Check-in</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

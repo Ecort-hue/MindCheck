@@ -1,0 +1,126 @@
+/* SIMPLE GLOBAL STYLES */
+body {
+  font-family: 'Inter', sans-serif;
+  color: #111827;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  background-color: #ffffff;
+}
+
+.container {
+  width: 100%;
+  max-width: 400px;
+  padding: 40px 20px;
+}
+
+/* Navigation Header */
+header {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 0;
+  border-bottom: 1px solid #E2E8F0;
+  margin-bottom: 30px;
+}
+
+header a {
+  text-decoration: none;
+  color: #64748B;
+  font-size: 14px;
+}
+
+header a.active {
+  color: #8B5CF6;
+  font-weight: bold;
+}
+
+/* Typography & Labels */
+h1 {
+  font-family: 'Crimson Text', serif;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 12px;
+}
+
+/* Form Elements */
+input[type="range"] {
+  width: 100%;
+  accent-color: #8B5CF6;
+  margin-bottom: 30px;
+}
+
+.pill-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.pill-input { display: none; }
+
+.pill-label {
+  padding: 8px 16px;
+  border: 1px solid #E2E8F0;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.pill-input:checked + .pill-label {
+  background: #F5F3FF;
+  border-color: #8B5CF6;
+  color: #7C3AED;
+}
+
+/* Chart */
+.chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 120px;
+  margin: 40px 0;
+  border-bottom: 2px solid #E2E8F0;
+}
+
+.bar {
+  width: 30px;
+  background: #F5F3FF;
+  border-radius: 4px 4px 0 0;
+  transition: height 1s ease;
+}
+
+.bar.highlight {
+  background: #8B5CF6;
+}
+
+/* Cards & Buttons */
+.card {
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 12px;
+}
+
+.card.featured {
+  background: #F5F3FF;
+  border-color: #8B5CF6;
+}
+
+.btn {
+  display: block;
+  background: #8B5CF6;
+  color: white;
+  text-align: center;
+  padding: 16px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: bold;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+}

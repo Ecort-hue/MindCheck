@@ -1,4 +1,13 @@
-// Triggered on checkIn.html
+// HELPER: Pick emoji based on slider value
+function getEmoji(value) {
+    if (value < 20) return "😢";
+    if (value < 40) return "🙁";
+    if (value < 60) return "😐";
+    if (value < 80) return "🙂";
+    return "😄";
+}
+
+// ACTION: Save data from check-in page
 function logCheckIn() {
     const moodValue = document.querySelector('input[type="range"]').value;
     const selectedTags = [];
@@ -8,90 +17,79 @@ function logCheckIn() {
         selectedTags.push(label);
     });
 
-    // 1. Save today's specific info
+    // Save Today's Data
     localStorage.setItem('userMood', moodValue);
     localStorage.setItem('userTags', JSON.stringify(selectedTags));
 
-    // 2. Manage the Weekly History Array
-    // Get existing history or start a new empty list
+    // Manage Weekly History Array
     let weeklyMoods = JSON.parse(localStorage.getItem('weeklyMoods') || "[]");
-    
-    // Add today's mood to the list
     weeklyMoods.push(moodValue);
-    
-    // Ensure we only keep the last 7 days (rolling week)
-    if (weeklyMoods.length > 7) {
-        weeklyMoods.shift(); // removes the oldest entry
-    }
-    
-    // Save the updated list back to local storage
+    if (weeklyMoods.length > 7) weeklyMoods.shift(); // Keep last 7 days
     localStorage.setItem('weeklyMoods', JSON.stringify(weeklyMoods));
 
-    // Move to the next page
     window.location.href = "userWeek.html";
 }
 
-// Triggered when a page loads
+// INITIALIZE: Run when any page loads
 window.onload = function() {
+    const slider = document.getElementById('mood-slider');
+    const emojiDisplay = document.getElementById('mood-emoji');
     const bars = document.querySelectorAll('.bar');
+    const patternBox = document.getElementById('user-pattern');
+    const feedbackBox = document.getElementById('dynamic-feedback');
+    const actionBox = document.getElementById('action-item');
+
     const savedMood = localStorage.getItem('userMood');
     const savedTags = JSON.parse(localStorage.getItem('userTags') || "[]");
     const weeklyMoods = JSON.parse(localStorage.getItem('weeklyMoods') || "[]");
-    
-    // 1. Update Chart (on userWeek.html) using the 7-day history
+
+    // 1. Emoji Slider Logic (checkIn.html)
+    if (slider && emojiDisplay) {
+        slider.addEventListener('input', function() {
+            emojiDisplay.innerText = getEmoji(this.value);
+        });
+    }
+
+    // 2. Weekly Chart Logic (userWeek.html)
     if (bars.length > 0 && weeklyMoods.length > 0) {
-        // We fill the bars from right to left so the newest is always at the end
         let barIndex = bars.length - 1;
-        
         for (let i = weeklyMoods.length - 1; i >= 0 && barIndex >= 0; i--) {
-            // Set the height based on history
             bars[barIndex].style.height = weeklyMoods[i] + "%";
-            
-            // Highlight only the most recent submission
-            if (i === weeklyMoods.length - 1) {
-                bars[barIndex].classList.add('highlight');
-            } else {
-                bars[barIndex].classList.remove('highlight');
-            }
+            if (i === weeklyMoods.length - 1) bars[barIndex].classList.add('highlight');
             barIndex--;
         }
     }
 
-    // 2. Update Patterns (on userWeek.html)
-    const patternBox = document.getElementById('user-pattern');
+    // 3. Pattern Logic (userWeek.html)
     if (patternBox) {
-        if (savedTags.length > 0) {
-            patternBox.innerHTML = `🟠 <b>${savedTags.join(", ")}</b> had the most impact on your mood today.`;
-        } else {
-            patternBox.innerHTML = `⚪️ You didn't select any specific factors today.`;
-        }
+        patternBox.innerHTML = savedTags.length > 0 
+            ? `🟠 <b>${savedTags.join(", ")}</b> had the most impact on your mood today.`
+            : `⚪️ No specific factors were tagged today.`;
     }
 
-    // 3. Update Mood Feedback (on userNextSteps.html)
-    const feedbackBox = document.getElementById('dynamic-feedback');
+    // 4. Feedback Logic (userNextSteps.html)
     if (feedbackBox && savedMood) {
         feedbackBox.innerText = savedMood < 40 
             ? "You've had a heavy day. Focus on gentle rest." 
             : "You're feeling resilient. Keep these positive habits going!";
     }
 
-    // 4. Specific Action Item Conclusions (on userNextSteps.html)
-    const actionBox = document.getElementById('action-item');
+    // 5. Specific Action Conclusions (userNextSteps.html)
     if (actionBox) {
         if (savedTags.includes("Sleep")) {
-            actionBox.innerText = "Since sleep is affecting you, try winding down 30 minutes earlier tonight without screens.";
+            actionBox.innerText = "Since sleep is a factor, try winding down 30 minutes earlier tonight without screens.";
         } else if (savedTags.includes("Stress")) {
-            actionBox.innerText = "To help lower your stress, take 2 minutes right now to practice deep breathing.";
+            actionBox.innerText = "To help with stress, take 2 minutes right now to practice deep belly breathing.";
         } else if (savedTags.includes("Diet")) {
-            actionBox.innerText = "Nourish your body today. Try drinking a glass of water and eating a healthy snack.";
+            actionBox.innerText = "Nourish your body today. Try drinking a full glass of water and reaching for a healthy snack.";
         } else if (savedTags.includes("Body")) {
-            actionBox.innerText = "Listen to your body. Some gentle stretching might help relieve physical tension.";
+            actionBox.innerText = "Listen to your body. Some gentle stretching or a warm shower might relieve tension.";
         } else if (savedTags.includes("Work")) {
-            actionBox.innerText = "Work is weighing on you. Remember to step away from your desk for short mental breaks.";
+            actionBox.innerText = "Work is weighing on you. Set a hard 'log-off' time today to protect your peace.";
         } else if (savedTags.includes("Social")) {
-            actionBox.innerText = "Social energy is impacting you. Take time for yourself if you need a recharge.";
+            actionBox.innerText = "Social energy is impacting you. It's okay to decline an invitation to recharge.";
         } else {
-            actionBox.innerText = "Step outside for 5 minutes without your phone to clear your head.";
+            actionBox.innerText = "Try stepping outside for 5 minutes without your phone to reset your focus.";
         }
     }
 };

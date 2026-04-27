@@ -1,4 +1,3 @@
-/* SIMPLE GLOBAL STYLES */
 body {
   font-family: 'Inter', sans-serif;
   color: #111827;
@@ -14,7 +13,6 @@ body {
   padding: 40px 20px;
 }
 
-/* Navigation Header */
 header {
   display: flex;
   justify-content: space-around;
@@ -34,7 +32,6 @@ header a.active {
   font-weight: bold;
 }
 
-/* Typography & Labels */
 h1 {
   font-family: 'Crimson Text', serif;
   font-size: 32px;
@@ -47,7 +44,6 @@ h1 {
   margin-bottom: 12px;
 }
 
-/* Form Elements */
 input[type="range"] {
   width: 100%;
   accent-color: #8B5CF6;
@@ -77,7 +73,6 @@ input[type="range"] {
   color: #7C3AED;
 }
 
-/* Chart */
 .chart {
   display: flex;
   align-items: flex-end;
@@ -98,7 +93,6 @@ input[type="range"] {
   background: #8B5CF6;
 }
 
-/* Cards & Buttons */
 .card {
   border: 1px solid #E2E8F0;
   border-radius: 12px;

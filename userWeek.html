@@ -1,38 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Your Week</title>
-    <link rel="stylesheet" href="checkIn.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Week | MindCheck</title>
+  <link rel="stylesheet" href="checkIn.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <a href="checkIn.html">Check In</a>
-            <a href="userWeek.html" class="active">Your Week</a>
-            <a href="userNextSteps.html">Next Steps</a>
-        </header>
+  <div class="wrap">
 
-        <h1>Your week</h1>
-       <div class="chart">
-            <div class="bar" style="height: 0%"></div>
-            <div class="bar" style="height: 0%"></div>
-            <div class="bar" style="height: 0%"></div>
-            <div class="bar" style="height: 0%"></div>
-            <div class="bar" style="height: 0%"></div> 
-            <div class="bar" style="height: 0%"></div> 
-            <div class="bar" style="height: 0%"></div> 
-        </div>
-        
-        <div style="margin-bottom: 30px;">
-            <p class="label">Patterns noticed</p>
-            <p id="user-pattern" style="font-size: 15px; color: #64748B;">
-                Analyzing your check-in...
-            </p>
-        </div>
+    <nav>
+      <a href="checkIn.html">Check In</a>
+      <a href="userWeek.html" class="active">Your Week</a>
+      <a href="userNextSteps.html">Next Steps</a>
+    </nav>
 
-        <a href="userNextSteps.html" class="btn">See Next Steps</a>
+    <h1>Your week</h1>
+
+    <div id="mood-badge" class="badge" style="display:none;">
+      <span id="badge-emoji">😐</span>
+      <span id="badge-label">Today's mood</span>
     </div>
-    <script src="script.js"></script>
+
+    <div class="chart" id="bar-chart">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar now"></div>
+    </div>
+    <div class="days" id="chart-labels"></div>
+
+    <div class="spacer"></div>
+
+    <span class="lbl">Today's factors</span>
+    <div id="user-pattern" class="muted">Complete a check-in to see your patterns.</div>
+
+    <div class="spacer"></div>
+
+    <div id="week-summary" class="card" style="display:none;">
+      <h3>📈 This week at a glance</h3>
+      <div id="week-summary-text"></div>
+    </div>
+
+    <a href="userNextSteps.html" class="btn purple">See Next Steps →</a>
+
+    <div class="center">
+      <button onclick="resetData()" class="reset">Clear all data</button>
+    </div>
+
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>

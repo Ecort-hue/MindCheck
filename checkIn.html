@@ -1,31 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Check In | MindCheck</title>
-    <link rel="stylesheet" href="checkIn.css">
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Check In | MindCheck</title>
+  <link rel="stylesheet" href="checkIn.css">
 </head>
 <body>
-    <div class="container">
-        <h1>How are you today?</h1>
-        
-        <p class="label">Mood</p>
-        <div id="mood-emoji" style="font-size: 60px; text-align: center; margin-bottom: 10px;">😐</div>
-        <input type="range" min="1" max="100" value="50" id="mood-slider">
-
-        <p class="label">What's affecting you?</p>
-        <div class="pill-container">
-            <input type="checkbox" id="t1" class="pill-input"><label for="t1" class="pill-label">Sleep</label>
-            <input type="checkbox" id="t2" class="pill-input"><label for="t2" class="pill-label">Stress</label>
-            <input type="checkbox" id="t3" class="pill-input"><label for="t3" class="pill-label">Social</label>
-            <input type="checkbox" id="t4" class="pill-input"><label for="t4" class="pill-label">Work</label>
-            <input type="checkbox" id="t5" class="pill-input"><label for="t5" class="pill-label">Body</label>
-            <input type="checkbox" id="t6" class="pill-input"><label for="t6" class="pill-label">Diet</label>
-        </div>
-
-        <button onclick="logCheckIn()" class="btn">Log Check-in</button>
+  <div class="wrap">
+ 
+    <nav>
+      <a href="checkIn.html" class="active">Check In</a>
+      <a href="userWeek.html">Your Week</a>
+      <a href="userNextSteps.html">Next Steps</a>
+    </nav>
+ 
+    <h1>How are you today?</h1>
+    <p class="sub">Drag the slider — your emoji updates live.</p>
+ 
+    <div class="emoji" id="mood-emoji">😐</div>
+    <span class="lbl">Mood</span>
+    <input type="range" min="1" max="100" value="50" id="mood-slider">
+ 
+    <span class="lbl">What's affecting you? <span class="lbl-note">(pick all that apply)</span></span>
+    <div class="pills">
+      <input type="checkbox" id="t1" class="pill-cb"><label for="t1" class="pill">😴 Sleep</label>
+      <input type="checkbox" id="t2" class="pill-cb"><label for="t2" class="pill">😤 Stress</label>
+      <input type="checkbox" id="t3" class="pill-cb"><label for="t3" class="pill">🤝 Social</label>
+      <input type="checkbox" id="t4" class="pill-cb"><label for="t4" class="pill">💼 Work</label>
+      <input type="checkbox" id="t5" class="pill-cb"><label for="t5" class="pill">🏃 Body</label>
+      <input type="checkbox" id="t6" class="pill-cb"><label for="t6" class="pill">🥗 Diet</label>
     </div>
-    <script src="script.js"></script>
+ 
+    <button class="btn purple" onclick="logCheckIn()">Log Check-In →</button>
+ 
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
+ 

@@ -1,35 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Next Steps</title>
-    <link rel="stylesheet" href="checkIn.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Next Steps | MindCheck</title>
+  <link rel="stylesheet" href="checkIn.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <a href="checkIn.html">Check In</a>
-            <a href="userWeek.html">Your Week</a>   
-            <a href="userNextSteps.html" class="active">Next Steps</a>
-        </header>
+  <div class="wrap">
 
-        <h1>Your next step</h1>
-        <p id="dynamic-feedback" style="font-style:italic; margin-bottom:30px; color:#7C3AED;">
-            Calculating...
-        </p>
+    <nav>
+      <a href="checkIn.html">Check In</a>
+      <a href="userWeek.html">Your Week</a>
+      <a href="userNextSteps.html" class="active">Next Steps</a>
+    </nav>
 
-        <div class="card featured">
-            <h3 style="margin-top:0">Today's Focus</h3>
-            <p id="action-item">Calculating personalized advice...</p>
-        </div>
+    <h1>Your next step</h1>
+    <p id="dynamic-feedback" class="sub italic purple">Calculating...</p>
 
-        <div class="card">
-            <h3 style="margin-top:0; color: #8B5CF6;">Talk to someone</h3>
-            <p style="color: #64748B;">Text a friend or reach out to a counselor.</p>
-        </div>
-
-        <a href="index.html" class="btn" style="background:#111827; margin-top: 20px;">Finish & Logout</a>
+    <div id="action-widget" class="action">
+      <h3 id="action-title">Today's Focus</h3>
+      <p id="action-desc">Loading personalized advice...</p>
+      <div id="action-interactive"></div>
     </div>
-    <script src="script.js"></script>
+
+    <div class="card">
+      <h3 class="purple">💬 Talk to someone</h3>
+      <p>Reaching out takes courage. Text a friend, or contact a counselor.</p>
+      <div class="row">
+        <a class="btn ghost">📱 Text a friend</a>
+        <a href="https://findtreatment.gov" target="_blank" class="btn ghost">🔗 Find support</a>
+      </div>
+    </div>
+
+    <div id="bonus-tip" class="card" style="display:none;">
+      <h3 id="bonus-tip-title">Extra tip</h3>
+      <p id="bonus-tip-text"></p>
+    </div>
+
+    <div id="note-card" class="card" style="display:none;">
+      <h3>📝 Your note from today</h3>
+      <p id="note-text" class="italic"></p>
+    </div>
+
+    <div class="spacer"></div>
+    <a href="index.html" class="btn dark">Finish &amp; Log Out</a>
+
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
